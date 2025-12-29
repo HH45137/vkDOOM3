@@ -126,7 +126,7 @@ idSIMDProcessor *p_simd;
 idSIMDProcessor *p_generic;
 long baseClocks = 0;
 
-
+/*
 #define TIME_TYPE int
 
 #pragma warning(disable : 4731)     // frame pointer register 'ebx' modified by inline assembly code
@@ -150,6 +150,43 @@ long saved_ebx = 0;
 	__asm mov ebx, saved_ebx				\
 	__asm xor eax, eax						\
 	__asm cpuid
+*/
+
+#include <intrin.h>
+
+#define TIME_TYPE unsigned long long
+
+#if 0
+#define StartRecordTime(start)          \
+{                                       \
+	_mm_lfence();                       \
+	start = __rdtsc();                  \
+	_mm_lfence();                       \
+}
+
+#define StopRecordTime(end)             \
+{                                       \
+	_mm_lfence();                       \
+	end = __rdtsc();                    \
+	_mm_lfence();                       \
+}
+#elif 1
+#define StartRecordTime(start)			\
+{                                       \
+	int cpu_info[4];                    \
+	__cpuid(cpu_info, 0);               \
+	start = __rdtsc();                  \
+	__cpuid(cpu_info, 0);               \
+}
+
+#define StopRecordTime(end)				\
+{                                       \
+	int cpu_info[4];                    \
+	__cpuid(cpu_info, 0);               \
+	end = __rdtsc();                    \
+	__cpuid(cpu_info, 0);               \
+}
+#endif
 
 
 #define GetBest( start, end, best )			\
