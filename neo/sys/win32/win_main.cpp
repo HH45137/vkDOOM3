@@ -1252,6 +1252,7 @@ int Sys_FPU_PrintStateFlags( char *ptr, int ctrl, int stat, int tags, int inof, 
 _except_handler
 ====================
 */
+/*
 EXCEPTION_DISPOSITION __cdecl _except_handler( struct _EXCEPTION_RECORD *ExceptionRecord, void * EstablisherFrame,
 												struct _CONTEXT *ContextRecord, void * DispatcherContext ) {
 
@@ -1316,6 +1317,7 @@ EXCEPTION_DISPOSITION __cdecl _except_handler( struct _EXCEPTION_RECORD *Excepti
     // Tell the OS to restart the faulting instruction
     return ExceptionContinueExecution;
 }
+*/
 
 #define TEST_FPU_EXCEPTIONS	/*	FPU_EXCEPTION_INVALID_OPERATION |		*/	\
 							/*	FPU_EXCEPTION_DENORMALIZED_OPERAND |	*/	\

@@ -276,6 +276,7 @@ LONG WINAPI InputLineWndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 	return CallWindowProc( s_wcd.SysInputLineWndProc, hWnd, uMsg, wParam, lParam );
 }
 
+#define GWL_WNDPROC         (-4)
 /*
 ** Sys_CreateConsole
 */
