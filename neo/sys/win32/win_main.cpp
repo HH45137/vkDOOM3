@@ -539,8 +539,8 @@ Sys_ListFiles
 */
 int Sys_ListFiles( const char *directory, const char *extension, idStrList &list ) {
 	idStr		search;
-	struct _finddata_t findinfo;
-	int			findhandle;
+	struct _finddatai64_t findinfo;
+	intptr_t findhandle;
 	int			flag;
 
 	if ( !extension) {
@@ -560,7 +560,7 @@ int Sys_ListFiles( const char *directory, const char *extension, idStrList &list
 	// search
 	list.Clear();
 
-	findhandle = _findfirst( search, &findinfo );
+	findhandle = _findfirsti64( search, &findinfo );
 	if ( findhandle == -1 ) {
 		return -1;
 	}
@@ -569,7 +569,7 @@ int Sys_ListFiles( const char *directory, const char *extension, idStrList &list
 		if ( flag ^ ( findinfo.attrib & _A_SUBDIR ) ) {
 			list.Append( findinfo.name );
 		}
-	} while ( _findnext( findhandle, &findinfo ) != -1 );
+	} while ( _findnexti64( findhandle, &findinfo ) != -1 );
 
 	_findclose( findhandle );
 
