@@ -33,7 +33,7 @@ If you have questions concerning this license or the applicable additional terms
 #include "../../ui/ListGUI.h"
 #include "../../ui/UserInterface.h"
 #include "../Game_local.h"
-#include "TypeInfo.h"
+// #include "TypeInfo.h"
 
 /*
 Save game related helper classes.

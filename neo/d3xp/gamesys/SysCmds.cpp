@@ -31,7 +31,7 @@ If you have questions concerning this license or the applicable additional terms
 #include "../precompiled.h"
 #include "../../renderer/RenderWorld.h"
 #include "../Game_local.h"
-#include "TypeInfo.h"
+// #include "TypeInfo.h"
 
 /*
 ==================

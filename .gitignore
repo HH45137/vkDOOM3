@@ -226,3 +226,4 @@ base/*
 *.fout
 *.vout
 renderdoc/
+/neo/.idea
