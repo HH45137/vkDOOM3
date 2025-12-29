@@ -73,7 +73,10 @@ double Sys_GetClockTicks() {
 
 #endif
 */
-	return 0.0;
+	LARGE_INTEGER li;
+
+	QueryPerformanceCounter( &li );
+	return (double ) li.LowPart + (double) 0xFFFFFFFF * li.HighPart;
 }
 
 /*
@@ -890,7 +893,7 @@ bool Sys_FPU_StackIsEmpty() {
 empty:
 	return true;
 */
-	return false;
+	return true;
 }
 
 /*
